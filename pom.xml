@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>io.github.davw</groupId>
+    <artifactId>midihack</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <properties>
+        <scala.version>2.10.4</scala.version>
+    </properties>
+
+    <profiles>
+        <profile>
+            <id>scala</id>
+            <activation>
+                <file>
+                    <exists>src/main/scala</exists>
+                </file>
+            </activation>
+            <dependencies>
+                <dependency>
+                    <groupId>org.scala-lang</groupId>
+                    <artifactId>scala-library</artifactId>
+                    <version>${scala.version}</version>
+                </dependency>
+                <dependency>
+                    <groupId>org.scala-lang</groupId>
+                    <artifactId>scala-compiler</artifactId>
+                    <version>${scala.version}</version>
+                </dependency>
+            </dependencies>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.scala-tools</groupId>
+                        <artifactId>maven-scala-plugin</artifactId>
+                        <version>2.15.0</version>
+                        <executions>
+                            <execution>
+                                <goals>
+                                    <goal>compile</goal>
+                                    <goal>testCompile</goal>
+                                </goals>
+                                <configuration>
+                                    <args>
+                                        <arg>-make:transitive</arg>
+                                        <arg>-dependencyfile</arg>
+                                        <arg>${project.build.directory}/.scala_dependencies</arg>
+                                    </args>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
+</project>
