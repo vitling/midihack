@@ -6,8 +6,8 @@ object Composition {
   def main(args: Array[String]) {
     val receiver = MidiSystem.getReceiver
     val melodicPatterns = Seq(
-      new SimplePatternGenerator(Seq(8,12,16), 0.33, Seq(Unison(44, 0)), 0),
-      /*new SimplePatternGenerator(Seq(32, 16), 0.6, Seq(Minor(56), Fifths(56, 1), Unison(56,1)), 1), */
+      new SimplePatternGenerator(Seq(8,12,16), 0.35, Seq(Unison(44, 0)), 0),
+      new SimplePatternGenerator(Seq(32, 16), 0.4, Seq(Minor(56), Fifths(56, 1), Unison(56,1), Unison(56, 0)), 1),
       new SimplePatternGenerator(Seq(8, 24), 0.2, Seq(Unison(44, 0)), 1),
       new SimplePatternGenerator(Seq(32), 0.5, Seq(Unison(44, 3)), 2))
 
