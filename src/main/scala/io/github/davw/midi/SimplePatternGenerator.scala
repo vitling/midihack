@@ -6,10 +6,13 @@ class SimplePatternGenerator(size: Seq[Int], noteProbability: Double = 0.5, stra
 
   private def random(): Double = Math.random()
   private def velocity() = Math.floor(random() * 127).toInt
-  override def generatePattern(): Pattern = new Pattern(
-    Range(0, Random.shuffle(size).head).map(i =>
-      if (Math.random() < noteProbability) Some(createNote(Random.shuffle(strategies).head)) else None
-    ), Some(this))
+  override def generatePattern(): Pattern = {
+    val strategy = Random.shuffle(strategies).head
+    new Pattern(
+      Range(0, Random.shuffle(size).head).map(i =>
+        if (Math.random() < noteProbability) Some(createNote(strategy)) else None
+      ), Some(this))
+  }
 
   def createNote(strategy: NoteStrategy): Note = Note(strategy.note(), velocity(), channel)
 }

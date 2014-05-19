@@ -39,8 +39,8 @@ class Sequencer(destination: Receiver, mutateFn: Pattern => Pattern,  mutateInte
   var globalTranspose = 0
   var mutateCounter = 0
   def mutate() {
-    if (mutateCounter % 4 == 0) globalTranspose = Math.floor(Math.random()*12).toInt-6
-    if (mutateCounter % 1 == 0) patterns = patterns.map(mutateFn)
+    if (mutateCounter % 8 == 0) globalTranspose = Math.floor(Math.random()*12).toInt-6
+    if (mutateCounter % 2 == 0) patterns = patterns.map(mutateFn)
     activePatterns = selectPatterns()
     mutateCounter = mutateCounter + 1
   }
