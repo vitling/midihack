@@ -34,6 +34,26 @@
             <build>
                 <plugins>
                     <plugin>
+                        <groupId>org.codehaus.mojo</groupId>
+                        <artifactId>exec-maven-plugin</artifactId>
+                        <version>1.2</version>
+                        <executions>
+                            <execution>
+                                <goals>
+                                    <goal>exec</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                        <configuration>
+                            <executable>java</executable>
+                            <arguments>
+                                <argument>-classpath</argument>
+                                <classpath />
+                                <argument>io.github.davw.midi.Composition</argument>
+                            </arguments>
+                        </configuration>
+                    </plugin>
+                    <plugin>
                         <groupId>org.scala-tools</groupId>
                         <artifactId>maven-scala-plugin</artifactId>
                         <version>2.15.0</version>
